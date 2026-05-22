@@ -54,7 +54,6 @@ const categories = ['All', 'Tea', 'Spice', 'Baduma', 'Coffee'];
 
 function ProductCard({ product, variant = 'offer' }: { product: typeof products[0]; variant?: 'offer' | 'pick' }) {
   const { addItem } = useCart();
-  const { formatPrice } = useCurrency();
 
   const handleAdd = () => {
     addItem({
