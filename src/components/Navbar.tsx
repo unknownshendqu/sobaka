@@ -211,11 +211,6 @@ export default function Navbar() {
                                 </button>
                               </div>
                               <div className="flex items-center gap-2">
-                                {item.price !== null && (
-                                  <span className="text-white font-semibold text-sm">
-                                    {formatPrice(item.price * item.quantity)}
-                                  </span>
-                                )}
                                 <button
                                   onClick={() => removeItem(item.id)}
                                   className="text-gray-500 hover:text-red-400 transition-colors"

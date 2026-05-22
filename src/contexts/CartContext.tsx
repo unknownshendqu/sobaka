@@ -4,8 +4,8 @@ export interface CartItem {
   id: number;
   name: string;
   weight: string;
-  price: number;
-  originalPrice: number;
+  price: number | null;
+  originalPrice: number | null;
   image: string;
   quantity: number;
 }
@@ -66,7 +66,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = items.reduce((sum, item) => sum + (item.price || 0) * item.quantity, 0);
   const codFee = items.length > 0 ? 400 : 0;
   const total = subtotal + codFee;
 

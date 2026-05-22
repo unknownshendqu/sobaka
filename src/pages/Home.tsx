@@ -2,7 +2,6 @@ import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { useCart } from '@/contexts/CartContext';
-import { useCurrency } from '@/contexts/CurrencyContext';
 
 const products = [
   { id: 1, name: 'BOP Special Tea', weight: '50g', price: null, originalPrice: null, discount: 10, category: 'Tea', image: '/images/1.png' },
@@ -93,12 +92,6 @@ function ProductCard({ product, variant = 'offer' }: { product: typeof products[
       <div className="p-4">
         <h3 className="text-white font-medium text-sm mb-1">{product.name}</h3>
         <p className="text-gray-400 text-xs mb-3">{product.weight}</p>
-        {product.price !== null && (
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-gray-500 text-sm line-through">{formatPrice(product.originalPrice)}</span>
-            <span className="text-white font-bold text-lg">{formatPrice(product.price)}</span>
-          </div>
-        )}
         <button
           onClick={handleAdd}
           className={variant === 'offer' ? 'w-full btn-outline text-xs py-2.5' : 'w-full btn-primary text-xs py-2.5'}
